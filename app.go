@@ -8,13 +8,14 @@ import (
 
 func main() {
 	app := gin.Default()
-	
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath("./config")
-	viper.SetConfigName("config")
 
-	baseUrl := viper.Get("application.baseUrl")
-	port := viper.Get("application.port")
+	viper.AddConfigPath("./config")
+	viper.SetConfigType("yaml")
+	viper.SetConfigName("dev")
+	viper.ReadInConfig()
+
+	baseUrl := viper.GetString("application.baseUrl")
+	port := viper.GetString("application.port")
 
 	app.Run(fmt.Sprintf("%s:%s", baseUrl, port))
 }

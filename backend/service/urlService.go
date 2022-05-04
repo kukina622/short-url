@@ -38,7 +38,7 @@ func (urlServiceInstance *urlService) GeraMapText(length int) string {
 	return mapText
 }
 
-func (urlServiceInstance *urlService) InsertRecord(url string, mapText string) {
+func (urlServiceInstance *urlService) AddUrlMappingRecord(url string, mapText string) {
 	urlServiceInstance.repository.Create(&model.UrlMapping{Url: url, MapText: mapText})
 }
 

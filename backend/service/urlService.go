@@ -2,10 +2,10 @@ package service
 
 import (
 	"errors"
+	"gorm.io/gorm"
 	"math/rand"
 	"shortURL/backend/model"
 	"time"
-	"gorm.io/gorm"
 )
 
 type urlService struct {
@@ -42,7 +42,8 @@ func (urlServiceInstance *urlService) AddUrlMappingRecord(url string, mapText st
 	urlServiceInstance.repository.Create(&model.UrlMapping{Url: url, MapText: mapText})
 }
 
-func (urlServiceInstance *urlService) GetUrlByMapText(mapText string) (*gorm.DB, error) {
-	result := urlServiceInstance.repository.Where("map_text = ?", mapText).First(&model.UrlMapping{})
-	return result, result.Error
+func (urlServiceInstance *urlService) GetUrlByMapText(mapText string) (model.UrlMapping, error) {
+	var result model.UrlMapping
+	err := urlServiceInstance.repository.Where("map_text = ?", mapText).First(&result).Error
+	return result, err
 }

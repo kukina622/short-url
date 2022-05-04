@@ -24,7 +24,7 @@ func GetUrlServiceInstance() *urlService {
 
 func (urlServiceInstance *urlService) MapTextHasConflict(mapText string) bool {
 	err := urlServiceInstance.repository.Where("map_text = ?", mapText).First(&model.UrlMapping{}).Error
-	return errors.Is(err, gorm.ErrRecordNotFound)
+	return !errors.Is(err, gorm.ErrRecordNotFound)
 }
 
 func (urlServiceInstance *urlService) GeraMapText(length int) string {

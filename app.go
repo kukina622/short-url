@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/viper"
 	"shortURL/backend/api"
 	"shortURL/backend/database"
+	"shortURL/backend/router"
 	"shortURL/backend/service"
 )
 
@@ -37,6 +38,8 @@ func main() {
 	{
 		apiRouter.POST("/url", api.PostUrl)
 	}
+
+	app.GET("/:maptext", router.GetUrlRedirct)
 
 	baseUrl := viper.GetString("application.baseUrl")
 	port := viper.GetString("application.port")

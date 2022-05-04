@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	"shortURL/backend/api"
 	"shortURL/backend/database"
 	"shortURL/backend/service"
 )
@@ -27,9 +28,15 @@ func main() {
 	})
 
 	database.Migrate()
-	
+
 	// init service
 	service.InitUrlService(db)
+
+	// api
+	apiRouter := app.Group("/api")
+	{
+		apiRouter.POST("/url", api.PostUrl)
+	}
 
 	baseUrl := viper.GetString("application.baseUrl")
 	port := viper.GetString("application.port")

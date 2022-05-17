@@ -4,10 +4,12 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Box
+  Box,
+  Flex
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { urlInfoProp } from "@/types/url";
+import { QRCodeCanvas } from "qrcode.react";
 
 interface historyAccordionprop {
   urlInfo: urlInfoProp;
@@ -44,14 +46,21 @@ function HistoryAccordion({ urlInfo }: historyAccordionprop) {
             borderRadius="lg"
             bg="#805ad5"
             color="white"
-            _hover={{ color: "white", bg : "#6b46c1" }}
+            _hover={{ color: "white", bg: "#6b46c1" }}
           >
             <Box flex="1" textAlign="left">
-              {shortenUrl}
+              {originUrl}
             </Box>
             <AccordionIcon />
           </AccordionButton>
-          <AccordionPanel pb={4}>{originUrl}</AccordionPanel>
+          <AccordionPanel pb={4} bg="rgba(0,0,0,0.02)">
+            <Flex justifyContent="space-between">
+              <a href={shortenUrl} target="_blank">
+                {shortenUrl}
+              </a>
+              <QRCodeCanvas value={shortenUrl} />
+            </Flex>
+          </AccordionPanel>
         </AccordionItem>
       ))}
     </Accordion>

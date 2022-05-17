@@ -33,7 +33,9 @@ function UrlInput({ setUrlInfo }: urlInputprop) {
       const shortenUrl = `http://127.0.0.1:8080/${res.data.mapText}` || "";
       setUrlInfo({ originUrl: url as string, shortenUrl });
       Swal.fire({
-        icon: "success"
+        icon: "success",
+        showConfirmButton: false,
+        timer: 800
       });
       e?.target.reset();
     } catch (error) {

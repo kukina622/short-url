@@ -1,4 +1,4 @@
-application:
+backend:
   baseUrl: "127.0.0.1"
   port: "8080"
   database_host: "127.0.0.1"
@@ -6,3 +6,5 @@ application:
   database_user: "test"
   database_password: "123456"
   database_name: "shorturl"
+frontend:
+  baseURL: "http://127.0.0.1:8080"

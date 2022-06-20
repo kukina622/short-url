@@ -23,11 +23,11 @@ func main() {
 	viper.SetConfigName("dev")
 	viper.ReadInConfig()
 
-	database_host := viper.GetString("application.database_host")
-	database_port := viper.GetString("application.database_port")
-	database_user := viper.GetString("application.database_user")
-	database_password := viper.GetString("application.database_password")
-	database_name := viper.GetString("application.database_name")
+	database_host := viper.GetString("backend.database_host")
+	database_port := viper.GetString("backend.database_port")
+	database_user := viper.GetString("backend.database_user")
+	database_password := viper.GetString("backend.database_password")
+	database_name := viper.GetString("backend.database_name")
 
 	db := database.Connect(&database.DbConfig{
 		Host: database_host, Port: database_port, User: database_user, Password: database_password, Name: database_name,

@@ -15,11 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src",
+    "baseUrl": "./frontend/src",
     "paths": {
       "@/*": ["*"]
     }
   },
-  "include": ["src"],
+  "include": ["./frontend/src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -46,8 +46,8 @@ func main() {
 
 	app.GET("/:maptext", router.GetUrlRedirct)
 
-	baseUrl := viper.GetString("application.baseUrl")
-	port := viper.GetString("application.port")
+	baseUrl := viper.GetString("backend.baseUrl")
+	port := viper.GetString("backend.port")
 
 	app.Run(fmt.Sprintf("%s:%s", baseUrl, port))
 }

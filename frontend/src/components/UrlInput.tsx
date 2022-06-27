@@ -30,7 +30,7 @@ function UrlInput({ setUrlInfo }: urlInputprop) {
     e?.preventDefault();
     try {
       const res = await apiPostUrl(url as string);
-      const shortenUrl = `http://127.0.0.1:8080/${res.data.mapText}` || "";
+      const shortenUrl = `${process.env.baseURL}/${res.data.mapText}` || "";
       setUrlInfo({ originUrl: url as string, shortenUrl });
       Swal.fire({
         icon: "success",

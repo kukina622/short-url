@@ -4,10 +4,8 @@ import * as path from "path";
 import yaml from "js-yaml";
 import * as fs from "fs";
 
-const configName = process.env.NODE_ENV === "production" ? "prod" : "dev";
-
 const config = yaml.load(
-  fs.readFileSync(`${__dirname}/config/${configName}.yaml`, "utf8")
+  fs.readFileSync(`${__dirname}/config/config.yaml`, "utf8")
 );
 
 // https://vitejs.dev/config/

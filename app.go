@@ -17,10 +17,9 @@ func main() {
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowAllOrigins = true
 	app.Use(cors.New(corsConfig))
-
 	viper.AddConfigPath("./config")
 	viper.SetConfigType("yaml")
-	viper.SetConfigName("dev")
+	viper.SetConfigName("config")
 	viper.ReadInConfig()
 
 	database_host := viper.GetString("backend.database_host")
